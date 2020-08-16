@@ -1,62 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Temperature Hot</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        body {
-            background: url(images/bg-image.jpg) no-repeat;
-            background-size: cover;
-            height: 100vh;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <link rel="shortcut icon" href="images/apple-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <form class="col-md-6 m-auto py-5">
-            <div class="input-group mb-3">
-                <input id="city" type="text" class="form-control" placeholder="Enter a location for Weather ...">
-                <div class="input-group-append">
-                    <button id="Search" type="button" class="btn btn-danger">Search</button>
-                </div>
+
+    <main class="app-main container">
+        <section class="searchInputBox">
+            <input type="text" id="input-box" class="input-box" placeholder="Enter city name..." autocomplete="off">
+        </section>
+
+        <section class="weather-body">
+            <div class="location-details">
+                <div class="city" id="city" style="font-size: 25px;">Bangladesh, Dhaka</div>
+                <div class="date" id="date">Date</div>
             </div>
-        </form>
-        <div class="weather-status text-white text-center">
-            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
-            <h4>
-                <span id="bityName">Dhaka</span>
-                <span id="country">BD</span>
-            </h4>
-            <h3><span id="temperature">29</span>&deg;C</h3>
-            <h1 class="lead" id="weather-condition">Clouds</h1>
-        </div>
-    </div>
+
+            <div class="weather-status">
+                <div class="temp" id="temp">00&deg;C</div>
+                <div class="min-max" id="min-max">0&deg;C (min) / 0&deg;C (max)</div>
+                <div class="weather" id="weather">clear</div>
+                <div id="gifArea"></div>
+            </div>
+        </section>
+    </main>
 
 
-    <script>
-
-        
-        function fetxhWeatherData(city){
-            fetch('https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${"e135d720f10026c448e9d792c0b47124"}&units=metric')
-            .then(res => res.json())
-            .then((json) => fetxhWeatherData(json))
-            .catch((error) => alert('not found'));
-        }
-        document.getElementById("search").addEventListener("click", function(){
-            const city = document.getElementById("city").value;
-            fetxhWeatherData(city);
-        })
-        fetxhWeatherData('dhaka');
 
 
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
